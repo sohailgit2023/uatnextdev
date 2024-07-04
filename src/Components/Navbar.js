@@ -1,32 +1,41 @@
 import React, { useContext, useEffect, useState } from 'react';
+import pursuitLogo from '../images/pursuit_logo(white).png'
 import { Link, useLocation } from 'react-router-dom';
 import { BiSolidFilePdf } from "react-icons/bi";
 import { CgPlayButtonO } from "react-icons/cg";
+import clsx from 'clsx';
 import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
-import Cookies from 'js-cookie';
-import clsx from 'clsx';
-import pursuitLogo from '../images/pursuit_logo(white).png';
 import Context from '../Context/Context';
-
+import Cookies from 'js-cookie';
 const Navbar = () => {
-  const { setSidebar, setHighlight } = useContext(Context);
+  const { setSidebar, setHighlight, highlight, highlightAuthor ,setHighlightAuthor, setTestCaseId } = useContext(Context);
   const location = useLocation();
-  const [action, setAction] = useState('/');
+  const [action, setAction] = useState('/')
   const [isSideMenuOpen, setMenu] = useState(false);
-
-  const link = [
-    { name: 'UATNext', pathName: '/' },
-    { name: 'Execute Test Case', pathName: '/ExecuteTestRun' },
-    { name: 'Autor UAT Test Cases', pathName: '/author-UAT-Test' }
-  ];
-
+  console.log('shanti')
+  console.log(highlight)
+  console.log(highlightAuthor)
+  const link=[
+    {
+      name:'UATNext', pathName:'/'
+    },
+    {
+      name:'Execute Test Case', pathName:'/ExecuteTestRun'
+    },
+    {
+      name:'Autor UAT Test Cases', pathName:'/author-UAT-Test'
+    }
+  ]
   useEffect(() => {
-    const pathArray = location.pathname.split('/');
-    setAction(pathArray[1]);
-    Cookies.remove('TestCycleId_Or_TestSuiteId');
-    setHighlight(pathArray[2] !== undefined ? pathArray[2] : '');
-  }, [location.pathname, setHighlight]);
+    setAction(location.pathname.split('/')[1])
+    console.log(location.pathname)
+    Cookies.remove('TestCycleId_Or_TestSuiteId')
+    console.log(location.pathname.split('/')[2])
+    location.pathname.split('/')[2]!=undefined ? setTestCaseId(location.pathname.split('/')[2]) : setTestCaseId('')
+    location.pathname.split('/')[2]!==undefined ? setHighlight(location.pathname.split('/')[2]) : setHighlight('')
+    location.pathname.split('/')[2]!==undefined ? setHighlightAuthor(location.pathname.split('/')[2]) : setHighlightAuthor('')
+  }, [location.pathname])
 
   return (
     <div className='flex fixed top-0 left-0 right-0 justify-between items-center h-12 w-full bg-cyan-500 z-50 shadow-md pr-4'>

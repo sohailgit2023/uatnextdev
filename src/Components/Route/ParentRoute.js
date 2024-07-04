@@ -11,7 +11,7 @@ import Review_UAT_Test_Cases_Sidebar from "../Pages/Author-UAT-Test-Case/Review_
 import Author_UAT_Test_Case from "../Pages/Author-UAT-Test-Case/Author_UAT_Test_Case";
 import CreateTestCaseTable from "../Pages/Author-UAT-Test-Case/TestCaseTabel/CreateTestCaseTabel";
 import TestCaseDetails from "../Pages/Author-UAT-Test-Case/TestCaseDetails";
-
+ 
 const ParentRoute = () => {
     const { highlight, highlightAuthor, testCaseId } = useContext(Context);
     console.log(highlight)
@@ -28,14 +28,14 @@ const ParentRoute = () => {
                         </Route>
                     </Route>
                     <Route path={`/testCaseDetails/${testCaseId}`} element={<TestCaseDetails/>}/>
-
-
+ 
+ 
                     <Route path="/ExecuteTestRun" element={<Execute_Test_Run_Sidebar />}>
                         <Route path={`${highlight}`} element={<Execute_Test_Run />} />
                     </Route>
                     <Route path={`/TestExecutionDetails`} element={<UAT_Test_Execution_Details />} />
                     <Route path="/defect" element={<Defect />} />
-
+ 
                 </Routes>
             </Router>
         </div>
