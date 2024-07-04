@@ -432,10 +432,10 @@ const UAT_Test_Execution_Details = () => {
                                                     <span className="text-xs lg:text-base font-semibold w-20">Project</span>
                                                     <span className="text-xs lg:text-sm font-normal">{Cookies.get('projectName')}</span>
                                                 </div>
-                                                <div className="flex items-center gap-1 lg:gap-8">
+                                                {tester!=='' &&<div className="flex items-center gap-1 lg:gap-8">
                                                     <span className="text-xs lg:text-base font-semibold w-20">Tester</span>
                                                     <span className="text-xs lg:text-sm font-normal">{tester}</span>
-                                                </div>
+                                                </div>}
                                                 <div className="flex items-center gap-1 lg:gap-8">
                                                     <span className="text-xs lg:text-base font-semibold w-20">Test Cycle</span>
                                                     <span className="text-xs lg:text-sm font-normal">{JSON.parse(Cookies.get('testCycleInfo')).testCycleName}</span>
